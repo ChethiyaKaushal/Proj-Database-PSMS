@@ -1,5 +1,5 @@
-create database PSMS;
-use psms;
+CREATE DATABASE PSMS;
+USE psms;
 
 CREATE TABLE Province (
     Province_ID varchar(10) PRIMARY KEY,
@@ -11,22 +11,20 @@ CREATE TABLE District (
     District_ID varchar(10) PRIMARY KEY,
     District_Name VARCHAR(50),
     Province_ID varchar(10),
-    FOREIGN KEY (Province_ID)
-    REFERENCES Province(Province_ID)
+    FOREIGN KEY (Province_ID) REFERENCES Province(Province_ID)
 );
 
 CREATE TABLE ATHLETE (
-    National_ID VARCHAR(20) NOT NULL,
-    Athlete_ID VARCHAR(10) PRIMARY KEY,
-    First_Name VARCHAR(50) NOT NULL,
-    Last_Name VARCHAR(50) NOT NULL,
-
-    Athlete_Name VARCHAR(101)
-        GENERATED ALWAYS AS (CONCAT(First_Name, ' ', Last_Name)) STORED,
-
-    REG_No VARCHAR(10) NOT NULL,
-    Date_of_Birth DATE,
-    Gender VARCHAR(10),
-    Age INT,
-    Contact_No VARCHAR(15) NOT NULL
+    ATHLETE_ID VARCHAR(20) NOT NULL,
+    FIRST_NAME VARCHAR(50) NOT NULL,
+    LAST_NAME VARCHAR(50) NOT NULL,
+    
+    FULL_NAME VARCHAR(101) GENERATED ALWAYS AS (CONCAT(FIRST_NAME, ' ', LAST_NAME)) STORED,
+    
+    NATIONAL_ID VARCHAR(20),
+    REG_NO VARCHAR(20),
+    DATE_OF_BIRTH DATE,
+    GENDER VARCHAR(10),
+    CONTACT_NO VARCHAR(15),
+    PRIMARY KEY (ATHLETE_ID)
 );
